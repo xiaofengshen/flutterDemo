@@ -123,11 +123,14 @@ class DialogState extends State<DialogPage> {
               child: Text("toast")),
           ElevatedButton(
               onPressed: () {
-                VersionModel().checkUpdate<VersionInfo>(HttpCallback(
+                VersionModel().checkUpdate(HttpCallback(
                   onSuccess: (data) {
                     print("回调${data.info.updateContent}");
                   },
-                  onError: (code, msg) {},
+                  onError: (code, msg) {
+
+
+                  },
                 ));
               },
               child: Text("网络请求"))

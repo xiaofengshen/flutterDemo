@@ -8,6 +8,8 @@ import 'package:untitled/login/Register2Page.dart';
 import 'package:untitled/login/RegisterPage.dart';
 import 'package:untitled/msg/TbsListPage.dart';
 import 'package:untitled/msg/TbsListPage2.dart';
+import 'package:untitled/page/inherited_page.dart';
+import 'package:untitled/provider/provider_route.dart';
 
 var routers = {
   "/login": (context) => LoginPage(),
@@ -19,6 +21,8 @@ var routers = {
   "/buttonPage": (context,{arguments}) => ButtonPage(),
   "/dialogPage": (context,{arguments}) => DialogPage(),
   "/imagePage": (context,{arguments}) => ImagePage(),
+  "/inheritedPage": (context,{arguments}) => InheritedPage(),
+  "/providerRoute": (context,{arguments}) => ProviderRoute(),
 };
 
 Function onGenerateRoute = (settings) {
