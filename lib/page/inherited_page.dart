@@ -23,6 +23,7 @@ class _InheritedPageState extends State<InheritedPage> {
       appBar: AppBar(
         title: Text("共享数据"),
       ),
+
       body: Container(
         height: 400,
         width: 500,
