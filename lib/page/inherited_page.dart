@@ -3,47 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:untitled/page/share_data_inherite.dart';
 import 'package:untitled/page/test_widget.dart';
 
-class InheritedPage extends StatefulWidget {
+class Inheritedpage extends StatefulWidget {
+  const Inheritedpage({Key key}) : super(key: key);
+
   @override
-  _InheritedPageState createState() => _InheritedPageState();
+  _InheritedpageState createState() => _InheritedpageState();
 }
 
-class _InheritedPageState extends State<InheritedPage> {
-  int count = 0;
-@override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
+class _InheritedpageState extends State<Inheritedpage> {
+  int num = 0;
 
-
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("共享数据"),
+        title: Text("Inherited"),
       ),
-
-      body: Container(
-        height: 400,
-        width: 500,
-        child: ShareDataInherite(
-            data: count,
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(10),
-                  child: TestWidget(),
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        count++;
-                      });
-                    },
-                    child: Text("点击+1"))
-              ],
-            )),
+      body: ShareDataInherite(
+        num,
+        child: Column(
+          children: [
+            TestWidget(),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    ++num;
+                  });
+                },
+                child: Text("点击+1"))
+          ],
+        ),
       ),
     );
   }

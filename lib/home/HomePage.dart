@@ -5,22 +5,18 @@ import 'package:untitled/login/LoginPage.dart';
 import 'package:untitled/net/result_data.dart';
 
 class HomePage extends StatefulWidget {
-
-
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   DateTime _lastPressedAt; //上次点击时间
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       child: Container(
         alignment: Alignment.center,
-        child: Column(
+        child: ListView(
           children: <Widget>[
             ElevatedButton(
                 onPressed: () {
@@ -80,11 +76,28 @@ class _HomePageState extends State<HomePage> {
                   Navigator.pushNamed(context, "/providerRoute");
                 },
                 child: Text("购物车")),
+            ElevatedButton(
+                onPressed: () {
+                  //未注册的跳转
+                  Navigator.pushNamed(context, "/colorPage");
+                },
+                child: Text("主题颜色")),
+            ElevatedButton(
+                onPressed: () {
+                  //未注册的跳转
+                  Navigator.pushNamed(context, "/themeTestRoute");
+                },
+                child: Text("切换主题")),
+            ElevatedButton(
+                onPressed: () {
+                  //未注册的跳转
+                  Navigator.pushNamed(context, "/futurePage");
+                },
+                child: Text("future")),
           ],
         ),
       ),
       onWillPop: () async {
-
         if (_lastPressedAt == null ||
             DateTime.now().difference(_lastPressedAt) > Duration(seconds: 1)) {
           //两次点击间隔超过1秒则重新计时
@@ -96,13 +109,11 @@ class _HomePageState extends State<HomePage> {
               timeInSecForIosWeb: 1,
               backgroundColor: Colors.red,
               textColor: Colors.white,
-              fontSize: 16.0
-          );
+              fontSize: 16.0);
           return false;
         }
 
         return true;
-
       },
     );
   }

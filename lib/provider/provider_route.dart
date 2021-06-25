@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/provider/change_notifier_provider.dart';
+import 'package:untitled/provider/consumer.dart';
+import 'package:untitled/provider/item.dart';
 
 import 'cart_model.dart';
-import 'change_notifier_provider.dart';
-import 'item.dart';
 
 class ProviderRoute extends StatefulWidget {
+  const ProviderRoute({Key key}) : super(key: key);
+
   @override
   _ProviderRouteState createState() => _ProviderRouteState();
 }
@@ -12,31 +15,33 @@ class ProviderRoute extends StatefulWidget {
 class _ProviderRouteState extends State<ProviderRoute> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text("Provider"),),body: Container(
-      child: ChangeNotifierProvider<CartModel>(
-        data: CartModel(),
-        child: Builder(builder: (context) {
-          return Column(
-            children: <Widget>[
-              Builder(builder: (context) {
-                var cart = ChangeNotifierProvider.of<CartModel>(context);
-                return Text("总价: ${cart?.totalPrice}");
-              }),
-              Builder(builder: (context) {
-                print("RaisedButton build"); //在后面优化部分会用到
-                return ElevatedButton(
-                  child: Text("添加商品"),
-                  onPressed: () {
-                    //给购物车中添加商品，添加后总价会更新
-                    ChangeNotifierProvider.of<CartModel>(context).add(
-                        Item(20.0, 1));
-                  },
-                );
-              }),
-            ],
-          );
-        }),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("购物车"),
       ),
-    ),);
+      body: ChangeNotifierProvider<CartModel>(
+        model: CartModel(),
+        child: Center(
+            child: Column(
+          children: [
+
+            Consumer( builder: (context, value) => Text(value.totalPrice.toString())),
+            Consumer(builder: (context, value) {
+
+           return   ElevatedButton(child: Text("加入购物车数量"),onPressed: () {
+
+
+             value.add(Item(10,1));
+
+
+              },);
+
+
+            },)
+
+          ],
+        )),
+      ),
+    );
   }
 }

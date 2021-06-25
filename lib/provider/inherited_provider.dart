@@ -1,13 +1,15 @@
-import 'package:flutter/material.dart';
+import 'dart:ffi';
 
-class InheritedProvider<T> extends InheritedWidget {
-  InheritedProvider({@required this.data, Widget child}) : super(child: child);
+import 'package:flutter/widgets.dart';
 
-  //共享状态使用泛型
-  final T data;
+class InheritedProvider extends InheritedWidget {
+  final dynamic data;
+
+  InheritedProvider(this.data, {Key key, Widget child})
+      : super(key: key, child: child);
 
   @override
-  bool updateShouldNotify(covariant InheritedProvider oldWidget) {
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
     return true;
   }
 }

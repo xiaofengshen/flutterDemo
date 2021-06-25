@@ -8,7 +8,10 @@ import 'package:untitled/login/Register2Page.dart';
 import 'package:untitled/login/RegisterPage.dart';
 import 'package:untitled/msg/TbsListPage.dart';
 import 'package:untitled/msg/TbsListPage2.dart';
+import 'package:untitled/page/color_page/color_page.dart';
+import 'package:untitled/page/future/future_page.dart';
 import 'package:untitled/page/inherited_page.dart';
+import 'package:untitled/page/theme_test_route/ThemeTestRoute.dart';
 import 'package:untitled/provider/provider_route.dart';
 
 var routers = {
@@ -21,8 +24,11 @@ var routers = {
   "/buttonPage": (context,{arguments}) => ButtonPage(),
   "/dialogPage": (context,{arguments}) => DialogPage(),
   "/imagePage": (context,{arguments}) => ImagePage(),
-  "/inheritedPage": (context,{arguments}) => InheritedPage(),
+  "/inheritedPage": (context,{arguments}) => Inheritedpage(),
   "/providerRoute": (context,{arguments}) => ProviderRoute(),
+  "/colorPage": (context,{arguments}) => ColorPage(),
+  "/themeTestRoute": (context,{arguments}) => ThemeTestRoute(),
+  "/futurePage": (context,{arguments}) => FuturePage(),
 };
 
 Function onGenerateRoute = (settings) {
